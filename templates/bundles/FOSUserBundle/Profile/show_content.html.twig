@@ -1,0 +1,14 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block body %}
+
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <td>{% for role in user.roles %}
+    <p>{{ role }}</p>
+    {% endfor %}</td>
+</div>
+
+{% endblock %}

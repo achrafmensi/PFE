@@ -1,0 +1,60 @@
+easy_admin:
+    site_name: '<img src="/assets/images/test.png" width="150" height="80"/>'
+    design:
+        # ...
+        assets:
+            favicon: '/assets/images/test.png'
+    entities:
+        User:
+            class: App\Entity\User
+            list:
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: false }
+                    - { name: 'new', label: 'Add New User' }
+                    - { name: 'search',  label: 'Search' }
+                    - { name: 'delete', icon: 'remove' , label: false }
+                title: "Users"
+                fields:  
+                    - username
+                    - email
+                    - enabled
+                    - lastLogin
+                    - roles 
+                
+            form:
+                title: 'Add Users'
+                fields:
+                    - username
+                    - email
+                    - enabled
+                    - roles
+                    - groups
+                    # if administrators are allowed to edit users' passwords and roles, add this:
+                    - { property: 'plainPassword', type: 'password', type_options: { required: true } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'Chef de Projet': 'ROLE_CHEF', 'Client': 'ROLE_CLIENT','Directeur technique': 'ROLE_DIRECTEUR','Consultant': 'ROLE_CONSULTANT','Cordinateur': 'ROLE_CORDINATEUR'} } }
+        # change the following to the namespaces of your own entities
+        Group : 
+            class : App\Entity\Group
+            list:
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: false }
+                    - { name: 'new',  label: 'Add New Group' }
+                    - { name: 'search', label: 'Search' }
+                    - { name: 'delete', icon: 'remove', label: false }
+                title: "Group"
+                
+            form:
+                title: 'Add Group of Roles'
+                fields:
+                    - name
+                    - roles
+                    # if administrators are allowed to edit users' passwords and roles, add this:
+                    - { property: 'roles', type: 'choice', type_options: { required: true, expanded: true ,multiple: true, choices: { 'Ajouter un Projet': 'ROLE_ADDPROJECT', 'Modfifer un Projet': 'ROLE_EDITPROJECT','Consulter Index Projet': 'ROLE_INDEXPROJET','Consulter Les Statestiques': 'ROLE_STATS'} } }
+        # change the following to the namespaces of your own entities
+        
+
+        
+
+
+
+                
